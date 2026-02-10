@@ -1,0 +1,79 @@
+<div class="h-full p-6 bg-zinc-950 overflow-auto">
+  <div class="mb-8">
+    <h1 class="text-4xl font-bold text-white tracking-tight">Menu</h1>
+    <p class="text-zinc-400 mt-2">Select items to add to your order</p>
+  </div>
+
+  <div class="flex flex-wrap gap-3 mb-8">
+    @for (cat of categories; track cat) {
+      <button
+        (click)="selectedCategory = cat"
+        [class.bg-amber-600]="selectedCategory === cat"
+        [class.text-white]="selectedCategory === cat"
+        [class.bg-zinc-800]="selectedCategory !== cat"
+        [class.text-zinc-300]="selectedCategory !== cat"
+        class="px-6 py-3 rounded-xl font-medium transition-all hover:bg-amber-700 hover:text-white"
+      >
+        {{ cat }}
+      </button>
+    }
+  </div>
+
+  <div
+    class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+  >
+    @for (item of filteredItems; track item.id) {
+      <div
+        class="bg-zinc-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl hover:scale-[1.02] transition-all duration-200 group"
+      >
+        <!-- Image / Emoji -->
+        <div class="h-48 bg-zinc-800 relative overflow-hidden rounded-t-2xl">
+          <img
+            [src]="item.image"
+            alt="{{ item.name }}"
+            class="w-full h-full object-cover transition-transform group-hover:scale-105"
+            (error)="handleImageError($event)"
+          />
+          <div
+            *ngIf="!item.image"
+            class="absolute inset-0 flex items-center justify-center text-6xl bg-gradient-to-br from-zinc-700 to-zinc-900"
+          >
+            🍔
+          </div>
+        </div>
+        <!-- Details -->
+        <div class="p-5">
+          <h3 class="font-bold text-lg text-white truncate">{{ item.name }}</h3>
+
+          <!-- Variants hint -->
+          @if (
+            item.name.includes("Small") ||
+            item.name.includes("Medium") ||
+            item.name.includes("Large")
+          ) {
+            <span class="text-xs text-amber-400 block mt-1">Size variant</span>
+          }
+
+          <div class="mt-4 flex items-center justify-between">
+            <span class="text-2xl font-bold text-amber-400">
+              {{ item.price | currency: "LKR " : "symbol-narrow" : "1.0-0" }}
+            </span>
+            <button
+              (click)="addToCart(item)"
+              class="bg-amber-600 hover:bg-amber-500 active:bg-amber-700 text-white px-5 py-2 rounded-xl font-medium transition-colors"
+            >
+              Add
+            </button>
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+
+  @if (filteredItems.length === 0) {
+    <div class="text-center py-20 text-zinc-500">
+      <div class="text-8xl mb-6">🍔</div>
+      <p class="text-xl">No items in this category yet</p>
+    </div>
+  }
+</div>
