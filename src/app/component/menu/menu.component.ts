@@ -1,6 +1,7 @@
 import { CartItem, CartService } from './../../services/cart.service';
 import { CurrencyPipe } from '@angular/common';
 import { Component, inject } from '@angular/core';
+import { CategoriesComponent } from "../categories/categories.component";
 
 
 interface MenuItem {
