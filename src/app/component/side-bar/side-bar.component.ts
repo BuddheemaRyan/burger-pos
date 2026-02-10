@@ -7,5 +7,7 @@ import { Component } from '@angular/core';
   styleUrl: './side-bar.component.css'
 })
 export class SideBarComponent {
-
+  logout(): void{
+    console.log('Logging out....');
+  }
 }
