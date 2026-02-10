@@ -2,10 +2,11 @@ import { Component } from '@angular/core';
 import { TopBarComponent } from "../../component/top-bar/top-bar.component";
 import { CartComponent } from "../../component/cart/cart.component";
 import { SideBarComponent } from "../../component/side-bar/side-bar.component";
+import { RouterOutlet } from "../../../../node_modules/@angular/router/router_module.d-Bx9ArA6K";
 
 @Component({
   selector: 'app-dashboard',
-  imports: [SideBarComponent],
+  imports: [SideBarComponent, CartComponent],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
 })
