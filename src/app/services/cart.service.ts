@@ -42,7 +42,7 @@ export class CartService {
     this.items.update(items =>
       items.map(item =>
         item.id === id
-        ? { ...item, quantity: Math.max(1, item.quantity + change) }
+          ? { ...item, quantity: Math.max(1, item.quantity + change) }
           : item
       )
     );
