@@ -19,7 +19,7 @@ interface OrderRequest {
   styleUrl: './cart.component.css'
 })
 export class CartComponent {
-  private apiUrl = 'http://localhost:8080/order'
+  private apiUrl = 'http://localhost:8080/order/place'
   private cartService = inject(CartService);
   private http = inject(HttpClient);
 
@@ -38,7 +38,7 @@ export class CartComponent {
   }
 
   placeOrder() {
-    if (this.cartItems.length === 0) {
+    if (this.cartItems().length === 0) {
       alert('Cart is empty');
       return;
     }
