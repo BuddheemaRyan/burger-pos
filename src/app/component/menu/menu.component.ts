@@ -98,7 +98,7 @@ export class MenuComponent {
       name: 'Medium Fries',
       category: 'fries',
       price: 380,//
-      image: 'https://plus.unsplash.com/premium_photo-1683121324474-83460636b0ed?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8bGFyZ2UlMjBmcmllc3xlbnwwfHwwfHx8MA%3D%3D?w=500'
+      image: 'https://plus.unsplash.com/premium_photo-1683121324474-83460636b0ed?w=500'
     },
     {
       id: 'fries-l',
