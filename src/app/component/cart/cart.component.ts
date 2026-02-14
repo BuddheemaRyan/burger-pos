@@ -1,15 +1,27 @@
 import { CommonModule, CurrencyPipe } from '@angular/common';
 import { CartItem, CartService } from './../../services/cart.service';
 import { Component, inject } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+
+interface OrderItemRequest {
+  productId: number;
+  quantity: number;
+}
+
+interface OrderRequest {
+  items: OrderItemRequest[];
+}
 
 @Component({
   selector: 'app-cart',
-  imports: [CurrencyPipe,CommonModule],
+  imports: [CurrencyPipe, CommonModule],
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.css'
 })
 export class CartComponent {
-  public cartService = inject(CartService);
+  private apiUrl = 'http://localhost:8080/order'
+  private cartService = inject(CartService);
+  private http = inject(HttpClient);
 
   cartItems = this.cartService.cartItems;
   itemCount = this.cartService.itemCount;
@@ -25,10 +37,36 @@ export class CartComponent {
     this.cartService.removeItem(item.id);
   }
 
-  placeOrder(): void {
-    if (this.cartItems().length === 0) return;
-    console.log('Order Placed!', this.cartItems(), 'Total:', this.total);
-    alert('Order Placed! Total:' + this.total() + 'LKR');
+  placeOrder() {
+    if (this.cartItems.length === 0) {
+      alert('Cart is empty');
+      return;
+    }
+
+    const request: OrderRequest = {
+      items: this.cartItems().map(item => ({
+        productId: Number(item.id),
+        quantity: item.quantity
+      }))
+    };
+
+    this.http.post(this.apiUrl, request).subscribe({
+      next: (response: any) => {
+        console.log('Order Created', response);
+        alert(`Order placed succesfully! OrderID: ${response.id}`);
+        this.cartService.clearCart();
+      },
+
+      error: (err) => {
+        console.error('Place order failed:', err);
+        alert('Failed to place order. check console for details')
+      }
+    })
+  }
+
+  clearCart(): void {
     this.cartService.clearCart();
   }
+
+
 }
