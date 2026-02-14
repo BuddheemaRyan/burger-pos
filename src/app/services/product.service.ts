@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 export interface ProductDto {
-  image: any;
   id: number | null;
   name: string;
   category: string;
