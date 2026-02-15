@@ -1,9 +1,7 @@
 import { CartItem, CartService } from './../../services/cart.service';
-import { CurrencyPipe , CommonModule} from '@angular/common';
+import { CommonModule,CurrencyPipe ,} from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
 import { ProductDto, ProductService } from '../../services/product.service';
-
-
 
 interface MenuItem {
   id: string;
@@ -15,7 +13,7 @@ interface MenuItem {
 
 @Component({
   selector: 'app-menu',
-  imports: [CurrencyPipe],
+  imports: [CurrencyPipe, CommonModule],
   templateUrl: './menu.component.html',
   styleUrl: './menu.component.css'
 })
