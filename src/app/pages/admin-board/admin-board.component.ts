@@ -3,10 +3,11 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ProductService, ProductDto } from '../../services/product.service';
 import { SideBarComponent } from "../../component/side-bar/side-bar.component";
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-admin-board',
-  imports: [FormsModule, CommonModule, SideBarComponent],
+  imports: [FormsModule, CommonModule, RouterLink],
   templateUrl: './admin-board.component.html',
   styleUrl: './admin-board.component.css'
 })
