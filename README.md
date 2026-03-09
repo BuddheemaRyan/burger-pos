@@ -1,6 +1,8 @@
 # 🍔 BurgerPOS
 
-A modern **Point of Sale (POS)** web application for a burger restaurant, built with Angular 19 and Tailwind CSS. BurgerPOS lets staff browse the menu, manage a live cart, and administer products — all from a clean, dark-themed interface.
+A modern **Point of Sale (POS)** web application for a burger restaurant, built with **Angular 19** and **Tailwind CSS**. BurgerPOS lets restaurant staff browse the menu, manage a live cart with real-time totals, and administer products — all from a clean, responsive, dark-themed interface.
+
+> **Currency:** All prices are displayed in **LKR (Sri Lankan Rupees)**.
 
 ---
 
@@ -8,6 +10,7 @@ A modern **Point of Sale (POS)** web application for a burger restaurant, built 
 
 - [Features](#features)
 - [Tech Stack](#tech-stack)
+- [Application Routes](#application-routes)
 - [Project Structure](#project-structure)
 - [Prerequisites](#prerequisites)
 - [Getting Started](#getting-started)
@@ -20,10 +23,10 @@ A modern **Point of Sale (POS)** web application for a burger restaurant, built 
 
 ## Features
 
-- **Dashboard** – Browse the full menu filtered by category (Burgers, Fries, Drinks, Snacks).
-- **Live Cart** – Add items, adjust quantities, and see a real-time subtotal, 8% tax, and total in LKR.
-- **Order View** – Dedicated order screen that focuses on the cart for quick checkout.
-- **Admin Board** – Full product management (create, read, update, delete) with image URL support.
+- **Dashboard** (`/`) – Browse the full menu filtered by category (`burger`, `fries`, `snacks`, `drinks`).
+- **Live Cart** – Add items, adjust quantities, remove individual items, or clear the cart. Displays a real-time subtotal, 8% tax, and grand total in LKR (Sri Lankan Rupees).
+- **Order View** (`/order`) – Dedicated checkout screen focused on the current cart contents.
+- **Admin Board** (`/admin`) – Full product management (create, read, update, delete) with image URL support and a modal form interface.
 - **Sidebar Navigation** – Quick access to Dashboard, Manage Products, and Order pages.
 - **Responsive Layout** – Built with Tailwind CSS utility classes for a consistent dark UI.
 
@@ -40,6 +43,16 @@ A modern **Point of Sale (POS)** web application for a burger restaurant, built 
 | HTTP | Angular `HttpClient` |
 | Testing | Karma + Jasmine |
 | Build | Angular CLI 19 |
+
+---
+
+## Application Routes
+
+| Path | Page | Description |
+|------|------|-------------|
+| `/` | Dashboard | Main POS screen — menu grid + live cart panel |
+| `/order` | Order | Checkout screen showing the current cart |
+| `/admin` | Admin Board | Product CRUD management panel |
 
 ---
 
