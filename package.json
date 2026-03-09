@@ -1,5 +1,6 @@
 {
-  "name": "burger",
+  "name": "burger-pos",
+  "description": "A modern Point of Sale (POS) web application for a burger restaurant, built with Angular 19 and Tailwind CSS. Features menu browsing, live cart management, and a product admin panel.",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
